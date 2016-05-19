@@ -3,10 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Title</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.js">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<style>
+		#fondo
+		{
+			background:url("../image/fondo.png");
+			background: cover;
+		}
+	
 		#bienvenida
 		{
 			border: 1px solid #CCC;
@@ -18,27 +29,56 @@
 			border: 1px solid #CCC;
 			display: none;
 		}
+		.arriba_derecha{
+			background-color:#C0C0F3;
+		}
+		.arriba_derecha >img{
+			border-radius: 100%;
+		}
 	</style>
 </head>
 <body>
-	<div id="bienvenida" class="well">
-		<h3>Hola, por favor ingresa tu nombre para entrar al chat</h3>
-		<input type="text" id="nombre" class="form-control">
-		<button onclick="guardarNombre()">Entrar</button>
+	<div id="fondo">
+		<div class="container">
+			<div class="col-md-4">
+				<div class="row">
+					
+				</div>
+				<div class="row">
+					
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div class="row arriba_derecha">
+					<div class="col-md-1"><img src="../image/logocodeacademy.png"></div>
+					<div class="col-md-11">
+						<h6>Laboratoria Arequipa</h6>
+						<p>Patty</p>
+					</div>
+				</div>
+				<div class="row abajo_derecha">
+									
+					<div id="bienvenida" class="well">
+						<h3>Hola, por favor ingresa tu nombre para entrar al chat</h3>
+						<input type="text" id="nombre" class="form-control">
+						<button onclick="guardarNombre()">Entrar</button>
+					</div>
+					<div id="chat" class="well">
+						<h1>Bienvenid@ a mi super chat</h1>
+						<p>Solo puedes envíar mensajes, en una siguiente versión también lo verás!!</p>
+						<input type="text" id="mensaje" class="form-control">
+						<button onclick="enviarMensaje()">Enviar mensaje</button>
+						<button onclick="limpiarMensajes()">Limpiar mensajes</button>
+						<ul id="lista_mensajes" class="list-group"></ul>
+						<p>
+							<small style="font-size:10px;">Si haces uso de este chat aceptas eliminar los break's por el resto de tu vida</small>
+						</p>
+					</div>
+				</div>	
+			</div>
+		</div>
 	</div>
-
-	<div id="chat" class="well">
-		<h1>Bienvenid@ a mi super chat</h1>
-		<p>Solo puedes envíar mensajes, en una siguiente versión también lo verás!!</p>
-		<input type="text" id="mensaje" class="form-control">
-		<button onclick="enviarMensaje()">Enviar mensaje</button>
-		<button onclick="limpiarMensajes()">Limpiar mensajes</button>
-		<ul id="lista_mensajes" class="list-group"></ul>
-
-		<p>
-			<small style="font-size:10px;">Si haces uso de este chat aceptas eliminar los break's por el resto de tu vida</small>
-		</p>
-	</div>
+	
 
 
 	<script>
