@@ -12,15 +12,21 @@
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<style>
+	*{
+	outline:1px solid rgba(255,0,0,0.3);}
 		.cont_tamano{
 
-			height: 430px;
+			height: 429px;
 			overflow: scroll;
+		}
+		.borde_container{
+			border:1px solid #808080;
+			outline-offset: -4px;
 		}
 		#fondo
 		{
-			background: url("../image/fondo.png");
-			background: cover;
+			background: url("https://scontent-grt2-1.xx.fbcdn.net/v/t1.0-9/13240076_1066962823342607_1870583144777676715_n.jpg?oh=fc73b5c7ac43ab69fcf07dabfa7c3f56&oe=57E4331D");
+			background-size: cover;
 		}
 	
 		#bienvenida
@@ -49,6 +55,9 @@
 		.mg0{
 			margin: 0%;
 		}
+		.mg2{
+			padding:2%;
+		}
 		.borde_dere{
 			border-left: 1px solid #B2B2B2;
 		}
@@ -59,7 +68,7 @@
 			background-color: #fff;
 			overflow: scroll;
 			padding-top: 3%;
-			height: 550px;
+			height: 560px;
 			}
 		#buscar{
 			width: 94%;
@@ -70,7 +79,7 @@
 			border:1px solid #B2B2B2;
 		}
 		.foto_chat{
-			background:url("../image/chat-panel-bg.png");
+			background:url("http://img3.todoiphone.net/wp-content/uploads/2014/03/WhatsApp-Wallpaper-30.jpg");
 			}
 		
 		
@@ -78,12 +87,12 @@
 </head>
 <body>
 	<div id="fondo">
-		<div class="container ">
+		<div class="container mg2 borde_container">
 
 			<div class="row arriba ">
 				<div class="col-md-4">
 					<div class="row">
-						<div class="col-md-2"><img class="foto"src="../image/patty.jpg"></div>
+						<div class="col-md-2"><img class="foto"src="https://scontent-grt2-1.xx.fbcdn.net/v/t1.0-9/12715736_1003281066377450_7069962673418698348_n.jpg?oh=3fa1175479dc0137995ffa2df90367c0&oe=57E22C58"></div>
 						<div class="col-md-8 "></div>
 						<div class="col-md-2">
 						<i class="icono1 pull-right glyphicon glyphicon-list-alt"></i>
@@ -93,7 +102,7 @@
 				</div>
 				<div class="col-md-8 ">
 					<div class="row borde_dere">
-						<div class="col-md-2"><img class="foto"src="../image/logocodeacademy.png"></div>
+						<div class="col-md-2"><img class="foto"src="https://d262ilb51hltx0.cloudfront.net/fit/c/60/60/1*zksGmHsUGSEqbtzrQMuhVA.png"></div>
 						<div class="col-md-8"><p class="mg0"><strong>Laboratoria Arequipa</strong></p><p>Patty</p>
 						</div>
 						<div class="col-md-2">
@@ -116,9 +125,9 @@
 						</div>
 					</div>
 				</div>	
-				<div class="col-md-8 ">
+				<div class="col-md-8 foto_chat">
 						<div class="row  ">
-							<div class="foto_chat  cont_tamano">
+							<div class=" cont_tamano">
 								<ul id="lista_mensajes" class="list-group"></ul>
 							</div>			
 							<div id="bienvenida" class="well">
