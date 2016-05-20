@@ -6,12 +6,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/font-awesome.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.js">
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.js">-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	<style>
+		.cont_tamano{
+
+			height: 430px;
+			overflow: scroll;
+		}
 		#fondo
 		{
 			background: url("../image/fondo.png");
@@ -33,7 +38,7 @@
 			background-color:#EEEEEE;
 		}
 		.abajo{
-			background-color:red;
+			background-color:#fff;
 		}
 		.foto{
 			border-radius: 100%;
@@ -44,47 +49,92 @@
 		.mg0{
 			margin: 0%;
 		}
+		.borde_dere{
+			border-left: 1px solid #B2B2B2;
+		}
+		.icono1{
+			padding: 15px 1px;
+		}
+		.list_mens{
+			background-color: #fff;
+			overflow: scroll;
+			padding-top: 3%;
+			height: 550px;
+			}
+		#buscar{
+			width: 94%;
+			border:none;
+
+					}
+		.border_buscar{
+			border:1px solid #B2B2B2;
+		}
+		.foto_chat{
+			background:url("../image/chat-panel-bg.png");
+			}
+		
+		
 	</style>
 </head>
 <body>
 	<div id="fondo">
-		<div class="container">
+		<div class="container ">
 
-			<div class="row arriba">
+			<div class="row arriba ">
 				<div class="col-md-4">
 					<div class="row">
 						<div class="col-md-2"><img class="foto"src="../image/patty.jpg"></div>
-						<div class="col-md-10"></div>
+						<div class="col-md-8 "></div>
+						<div class="col-md-2">
+						<i class="icono1 pull-right glyphicon glyphicon-list-alt"></i>
+						<i class=" icono1 pull-right glyphicon glyphicon-th-list"></i>
+						 </div>
 					</div>
 				</div>
-				<div class="col-md-8">
-					<div class="row">
+				<div class="col-md-8 ">
+					<div class="row borde_dere">
 						<div class="col-md-2"><img class="foto"src="../image/logocodeacademy.png"></div>
-						<div class="col-md-10"><p class="mg0"><strong>Laboratoria Arequipa</strong></p><p>Patty</p> </div>
+						<div class="col-md-8"><p class="mg0"><strong>Laboratoria Arequipa</strong></p><p>Patty</p>
+						</div>
+						<div class="col-md-2">
+						<i class="icono1 pull-right glyphicon glyphicon-list-alt"></i>
+						<i class=" icono1 pull-right glyphicon glyphicon-paperclip"></i>
+						 </div>
 					</div>	
 				</div>	
 			</div>
 			<div class="row abajo">
 				<div class="col-md-4">
-					<div class="row"></div>
+					<div class="row ">
+						<div class="border_buscar">
+							<i class="glyphicon glyphicon-zoom-in"></i>
+							<input type="text" id="buscar" class="buscador" placeholder="Buscar o empezar un nuevo Chat" >
+							</input>
+						</div>
+						<div class="list_mens">
+							<ul id="nombres" class="list-group"></ul>
+						</div>
+					</div>
 				</div>	
-				<div class="col-md-8">
-						<div class="row ">
-										
+				<div class="col-md-8 ">
+						<div class="row  ">
+							<div class="foto_chat  cont_tamano">
+								<ul id="lista_mensajes" class="list-group"></ul>
+							</div>			
 							<div id="bienvenida" class="well">
-								<h3>Hola, por favor ingresa tu nombre para entrar al chat</h3>
+								<h5>Hola, por favor ingresa tu nombre para entrar al chat</h5>
 								<input type="text" id="nombre" class="form-control">
 								<button onclick="guardarNombre()">Entrar</button>
 							</div>
 							<div id="chat" class="well">
-								<h1>Bienvenid@ a mi super chat</h1>
-								<p>Solo puedes envíar mensajes, en una siguiente versión también lo verás!!</p>
+								
 								<input type="text" id="mensaje" class="form-control">
 								<button onclick="enviarMensaje()">Enviar mensaje</button>
 								<button onclick="limpiarMensajes()">Limpiar mensajes</button>
-								<ul id="lista_mensajes" class="list-group"></ul>
+								
+
 								<p>
-									<small style="font-size:10px;">Si haces uso de este chat aceptas eliminar los break's por el resto de tu vida</small>
+									<small style="font-size:9px;">Chat creado por Patricia Mendoza Soncco</small>
 								</p>
 							</div>
 						</div>	
@@ -117,6 +167,8 @@
 		socket.on('nuevo_mensaje', function (_msg)
 		{
 			$('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
+			$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
+			
 		});
 	</script>
 </body>
