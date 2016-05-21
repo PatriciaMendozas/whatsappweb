@@ -21,7 +21,11 @@
 		}
 		.borde_container{
 			border:1px solid #808080;
-			outline-offset: -4px;
+			outline-offset: 1px;
+		}
+		.srilo_lt{
+			color:#233F5F;
+			font-family: 'Big Caslon', 'Book Antiqua', 'Palatino Linotype', Georgia, serif;
 		}
 		#fondo
 		{
@@ -48,7 +52,7 @@
 		}
 		.foto{
 			border-radius: 100%;
-			max-width: 100%;
+			max-width: 178%;
 			padding: 2% 0%;
 		}
 
@@ -58,6 +62,7 @@
 		.mg2{
 			padding:2%;
 		}
+
 		.borde_dere{
 			border-left: 1px solid #B2B2B2;
 		}
@@ -92,8 +97,8 @@
 			<div class="row arriba ">
 				<div class="col-md-4">
 					<div class="row">
-						<div class="col-md-2"><img class="foto"src="https://scontent-grt2-1.xx.fbcdn.net/v/t1.0-9/12715736_1003281066377450_7069962673418698348_n.jpg?oh=3fa1175479dc0137995ffa2df90367c0&oe=57E22C58"></div>
-						<div class="col-md-8 "></div>
+						<div class="col-md-2 mg0"><img class="foto"src="https://scontent-grt2-1.xx.fbcdn.net/v/t1.0-9/12715736_1003281066377450_7069962673418698348_n.jpg?oh=3fa1175479dc0137995ffa2df90367c0&oe=57E22C58"></div>
+						<div class="col-md-8 text-center"><p class="srilo_lt" >Detras de una gran mujer,hay un cabron que le pone el pie para que se caiga.</p></div>
 						<div class="col-md-2">
 						<i class="icono1 pull-right glyphicon glyphicon-list-alt"></i>
 						<i class=" icono1 pull-right glyphicon glyphicon-th-list"></i>
@@ -103,7 +108,9 @@
 				<div class="col-md-8 ">
 					<div class="row borde_dere">
 						<div class="col-md-2"><img class="foto"src="https://d262ilb51hltx0.cloudfront.net/fit/c/60/60/1*zksGmHsUGSEqbtzrQMuhVA.png"></div>
-						<div class="col-md-8"><p class="mg0"><strong>Laboratoria Arequipa</strong></p><p>Patty</p>
+						<div class="col-md-8"><p class="mg0 srilo_lt"><strong>Laboratoria Arequipa</strong></p>
+						<p class="srilo_lt">Patty</p>
+						<p id="ultimo_mj" class="srilo_lt"></p>
 						</div>
 						<div class="col-md-2">
 						<i class="icono1 pull-right glyphicon glyphicon-list-alt"></i>
@@ -117,33 +124,33 @@
 					<div class="row  ">
 						<div class="border_buscar">
 							<i class="glyphicon glyphicon-zoom-in"></i>
-							<input type="text" id="buscar" class="buscador" placeholder="Buscar o empezar un nuevo Chat" >
+							<input type="text" id="buscar" class="buscador srilo_lt" placeholder="Buscar o empezar un nuevo Chat" >
 							</input>
 						</div>
 						<div class="list_mens foto_chat">
-							<ul id="nombres" class="list-group"></ul>
+							<ul id="nombres" class="list-group srilo_lt"></ul>
 						</div>
 					</div>
 				</div>	
 				<div class="col-md-8">
 						<div class="row foto_chat ">
 							<div class=" cont_tamano">
-								<ul id="lista_mensajes" class="list-group"></ul>
+								<ul id="lista_mensajes" class="list-group srilo_lt"></ul>
 							</div>			
 							<div id="bienvenida" class="well">
-								<h5>Hola, por favor ingresa tu nombre para entrar al chat</h5>
+								<h5 class="srilo_lt">Hola, por favor ingresa tu nombre para entrar al chat</h5>
 								<input type="text" id="nombre" class="form-control">
-								<button onclick="guardarNombre()">Entrar</button>
+								<button class="srilo_lt" onclick="guardarNombre()">Entrar</button>
 							</div>
 							<div id="chat" class="well">
 								
-								<input type="text" id="mensaje" class="form-control">
-								<button onclick="enviarMensaje()">Enviar mensaje</button>
-								<button onclick="limpiarMensajes()">Limpiar mensajes</button>
+								<input srilo_lt type="text" id="mensaje" class="form-control srilo_lt">
+								<button class="srilo_lt" onclick="enviarMensaje()">Enviar mensaje</button>
+								<button class="srilo_lt" onclick="limpiarMensajes()">Limpiar mensajes</button>
 								
 
 								<p>
-									<small style="font-size:9px;">Chat creado por Patricia Mendoza Soncco</small>
+									<small class="srilo_lt" style="font-size:9px;">Chat creado por Patricia Mendoza Soncco</small>
 								</p>
 							</div>
 						</div>	
@@ -183,23 +190,33 @@
 
 			if (x==0){
 				cont[x]=nombre;
-				
 				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
-				x=x+1;}
+				$('#ultimo_mj').append('<p>' + _msg + '</p>');
+				x=x+1;
+				}
 			else{
-				for (;i<x;){
+				for (i=0; i<x; i++)
+				{
 					if (cont[i]==nombre) {
 						cont[i]=nombre;
+						
 						break;
 						} 
 					else {
 						i++;
 						}
-					}
-				cont[x]=nombre;
-				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
-				x=x+1;	
-			
+					
+				}
+				if (i==x){
+
+					cont[x]=nombre;
+					$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
+					x=x+1;	}
+				else{
+					
+				}
+				$('#ultimo_mj').html('');
+				$('#ultimo_mj').append('<p>' + _msg + '</p>');
 				}
 		});
 
