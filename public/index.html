@@ -157,9 +157,9 @@
 	<script>
 		var socket = io('/');
 		var nombre;
-		var cont;
-		var x;
-		var i;
+		var cont= new Array();
+		var x=0;
+		var i=0;
 		function guardarNombre()
 		{
 			nombre = $('#nombre').val();
@@ -180,24 +180,27 @@
 		socket.on('nuevo_mensaje', function (_msg)
 		{
 			$('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
+
 			if (x==0){
-				cont[x]=#nombre;
+				cont[x]=nombre;
+				
 				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
-				x=x+1;
+				x=x+1;}
 			else{
 				for (;i<x;){
 					if (cont[i]==nombre) {
 						cont[i]=nombre;
 						break;
-					} else {
+						} 
+					else {
 						i++;
+						}
 					}
-				}
 				cont[x]=nombre;
 				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
 				x=x+1;	
-			}
-			}
+			
+				}
 		});
 
 	</script>
