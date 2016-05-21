@@ -31,13 +31,13 @@
 	
 		#bienvenida
 		{
-			border: 1px solid #CCC;
+			border: 1px solid #B2B2B2;
 			margin: 10px;
 		}
 		#chat
 		{
 			margin: 10px;
-			border: 1px solid #CCC;
+			border: 1px solid #B2B2B2;
 			display: none;
 		}
 		.arriba{
@@ -112,21 +112,21 @@
 					</div>	
 				</div>	
 			</div>
-			<div class="row abajo">
+			<div class="row abajo ">
 				<div class="col-md-4">
-					<div class="row ">
+					<div class="row  ">
 						<div class="border_buscar">
 							<i class="glyphicon glyphicon-zoom-in"></i>
 							<input type="text" id="buscar" class="buscador" placeholder="Buscar o empezar un nuevo Chat" >
 							</input>
 						</div>
-						<div class="list_mens">
+						<div class="list_mens foto_chat">
 							<ul id="nombres" class="list-group"></ul>
 						</div>
 					</div>
 				</div>	
-				<div class="col-md-8 foto_chat">
-						<div class="row  ">
+				<div class="col-md-8">
+						<div class="row foto_chat ">
 							<div class=" cont_tamano">
 								<ul id="lista_mensajes" class="list-group"></ul>
 							</div>			
@@ -157,6 +157,9 @@
 	<script>
 		var socket = io('/');
 		var nombre;
+		var cont;
+		var x;
+		var i;
 		function guardarNombre()
 		{
 			nombre = $('#nombre').val();
@@ -173,12 +176,30 @@
 		{
 			$('#lista_mensajes').html('');
 		}
+
 		socket.on('nuevo_mensaje', function (_msg)
 		{
 			$('#lista_mensajes').append('<li class="list-group-item">' + _msg + '</li>');
-			$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
-			
+			if (x==0){
+				cont[x]=#nombre;
+				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
+				x=x+1;
+			else{
+				for (;i<x;){
+					if (cont[i]==nombre) {
+						cont[i]=nombre;
+						break;
+					} else {
+						i++;
+					}
+				}
+				cont[x]=nombre;
+				$('#nombres').append('<li class="list-group-item">' + _msg + '</li>');
+				x=x+1;	
+			}
+			}
 		});
+
 	</script>
 </body>
 </html>
